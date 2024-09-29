@@ -424,6 +424,7 @@ CONTINUATION : DEFAULT
 PSPOT_BETA_PHI_TYPE = REAL
 SMEARING_SCHEME  ColdSmearing
 File_param aa.bbb
+socket_host 127.0.0.1
 """)
         test_dict = parse_cell_param_file(test_text)[0]
 
@@ -432,7 +433,8 @@ File_param aa.bbb
                                      'continuation': 'DEFAULT',
                                      'file_param': 'aa.bbb',
                                      'pspot_beta_phi_type': 'REAL',
-                                     'smearing_scheme': 'ColdSmearing'})
+                                     'smearing_scheme': 'ColdSmearing',
+                                     'socket_host': '127.0.0.1'})
 
     def test_vector_params(self):
         test_text = io.StringIO("""

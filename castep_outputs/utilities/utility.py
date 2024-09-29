@@ -378,16 +378,17 @@ def determine_type(data: str) -> type:
     >>> determine_type('BEEF')
     <class 'str'>
     """
+
     if data.title() in ("T", "True", "F", "False"):
         return bool
 
-    if re.match(rf"(?:\s*{REs.EXPFNUMBER_RE})+", data):
+    if len(re.findall(REs.EXPFNUMBER_RE, data)) == 1:
         return float
 
-    if re.match(rf"(?:\s*{REs.RATIONAL_RE})+", data):
+    if len(re.findall(REs.RATIONAL_RE, data)) == 1:
         return float
 
-    if re.match(rf"(?:\s*{REs.INTNUMBER_RE})+", data):
+    if len(re.findall(r"(?:\s*[+-]?\d+)+", data)) == 1:
         return int
 
     return str
